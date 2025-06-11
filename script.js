@@ -1,6 +1,50 @@
 let currentIsProfile = true;
 
-// Splash screen with fade-out
+// Splash screen animation
+window.addEventListener("load", function () {
+  setTimeout(() => {
+    const splash = document.getElementById("splash-screen");
+    splash.classList.add("fade-out");
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 2000);
+  }, 2000);
+});
+
+// Toggle Profile/IITM section
+function toggleLeftSection() {
+  const profile = document.querySelector('.profile-block');
+  const iitm = document.querySelector('.iitm-block');
+  if (currentIsProfile) {
+    profile.classList.remove('active');
+    iitm.classList.add('active');
+  } else {
+    iitm.classList.remove('active');
+    profile.classList.add('active');
+  }
+  currentIsProfile = !currentIsProfile;
+}
+setInterval(toggleLeftSection, 2000);
+
+// Hamburger menu toggle
+function toggleMenu() {
+  document.getElementById('nav-links').classList.toggle('show');
+}
+
+// Dark/Light theme toggle
+function toggleTheme() {
+  document.body.classList.toggle('dark-theme');
+  const icon = document.getElementById('theme-icon');
+  if (document.body.classList.contains('dark-theme')) {
+    icon.textContent = '☀️';
+  } else {
+    icon.textContent = '🌙';
+  }
+}
+
+/*let currentIsProfile = true;
+
+//Splash screen with fade-out
 window.addEventListener("load", function () {
   setTimeout(function () {
     const splash = document.getElementById("splash-screen");
@@ -46,4 +90,4 @@ function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
   navLinks.classList.toggle('show');
 }
-
+*/
